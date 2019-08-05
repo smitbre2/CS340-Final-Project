@@ -1,7 +1,12 @@
 <!DOCTYPE HTML>
+<?php
+	include 'header.php';
+	include 'connectvars.php';
+?>
+
 <html>
 
-<!---INCLUDE SCRIPTS HERE--!>
+/* INCLUDE SCRIPTS HERE */
    <link rel="stylesheet" href="main.css">
 
    <head>
@@ -9,8 +14,6 @@
    </head>
 
    <body>
-	<h1>Here we cater to your every movie need. Rentals, reviews we have it all!</h1>
-
 	<div class = "navbar">
 		<a class="active" href="#home">Home</a>
 		<a href="#inventory">Inventory</a>
@@ -21,3 +24,9 @@
    </body>
 </html>
 
+<?php
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+	if(!$conn) {
+		die('Can not connect to server: ' . mysql_error());
+	}
+?>
