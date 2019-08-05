@@ -2,10 +2,11 @@
 <?php
 	include 'connectvars.php';
 	include 'header.php';
-	include 'main.css';
 ?>
 
 <html>
+	<link rel="stylesheet" href="main.css">
+
 	<h3>About</h3>
 
 </html>

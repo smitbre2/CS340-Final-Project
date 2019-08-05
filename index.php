@@ -4,6 +4,8 @@
 	include 'connectvars.php';
 ?>
 <html>
+	<link rel="stylesheet" href="main.css">
+
 	<title>Movies R Us</title>
 	<h3>Home</h3>
 </html>
