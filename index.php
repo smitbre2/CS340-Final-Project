@@ -6,7 +6,7 @@
 
 <html>
 
-/* INCLUDE SCRIPTS HERE */
+<!--INCLUDE SCRIPTS HERE-->
    <link rel="stylesheet" href="main.css">
 
    <head>

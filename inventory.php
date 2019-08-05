@@ -4,6 +4,7 @@
 ?>
 
 <html>
+
 	<h3>Inventory</h3>
 	<link rel="stylesheet" href="main.css">
 </html>
