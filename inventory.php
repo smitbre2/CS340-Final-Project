@@ -28,7 +28,7 @@
 	if(!$conn) {
 		die('Could not connect: ' . msql_error());
 	}
-
+/* Here we will have to add in table specifics
 	//Get table from database
 	$query = "SELECT * FROM Inventory"
 	$result = mysqli_query($conn, $query);
@@ -56,4 +56,5 @@
 			echo "<td>$cell</td>";
 		echo "</tr>\n";
 	}
+	*/
 ?>
