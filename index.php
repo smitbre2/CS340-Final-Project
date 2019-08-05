@@ -15,10 +15,10 @@
 
    <body>
 	<div class = "navbar">
-		<a class="active" href="#home">Home</a>
-		<a href="#inventory">Inventory</a>
-		<a href="#reviews">Reviews</a>
-		<a href="#about">About</a>
+		<a class="active" href="index.php">Home</a>
+		<a href="inventory.php">Inventory</a>
+		<a href="reviews.php">Reviews</a>
+		<a href="about.php">About</a>
 	</div>
 
    </body>
