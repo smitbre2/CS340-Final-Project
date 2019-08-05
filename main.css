@@ -18,6 +18,11 @@
 }
 
 .navbar a:active {
-	background-color: #776b36
+	background-color: #776b36;
 	color: white;
+}
+
+.navbar a:right {
+
+	text-align: right;	
 }
