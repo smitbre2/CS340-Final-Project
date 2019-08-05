@@ -4,9 +4,21 @@
 ?>
 
 <html>
+	<link rel="stylesheet" href="main.css">
+   <head>
+	<title>Movies R Us</title>
+   </head>
+
+   <body>
+	<div class = "navbar">
+		<a class="active" href="index.php">Home</a>
+		<a href="inventory.php">Inventory</a>
+		<a href="reviews.php">Reviews</a>
+		<a href="about.php">About</a>
+	</div>
 
 	<h3>Inventory</h3>
-	<link rel="stylesheet" href="main.css">
+   </body>
 </html>
 
 
@@ -43,7 +55,5 @@
 		foreach($row as $cell)
 			echo "<td>$cell</td>";
 		echo "</tr>\n";
-	}
-
 	}
 ?>
