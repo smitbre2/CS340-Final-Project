@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Aug 06, 2019 at 01:26 PM
+-- Generation Time: Aug 06, 2019 at 01:27 PM
 -- Server version: 10.3.13-MariaDB-log
 -- PHP Version: 7.0.33
 
@@ -25,45 +25,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Inventory`
+-- Table structure for table `Rented`
 --
 
-CREATE TABLE `Inventory` (
+CREATE TABLE `Rented` (
+  `ID` int(4) NOT NULL,
   `MOVIE_ID` int(4) NOT NULL,
-  `STOCK` int(4) DEFAULT NULL,
-  `STOCK_OUT` int(11) NOT NULL
+  `DATE` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Inventory`
+-- Dumping data for table `Rented`
 --
 
-INSERT INTO `Inventory` (`MOVIE_ID`, `STOCK`, `STOCK_OUT`) VALUES
-(8, 5, 0),
-(14, 4, 1),
-(19, 3, 0);
+INSERT INTO `Rented` (`ID`, `MOVIE_ID`, `DATE`) VALUES
+(8, 14, '2019-08-06 13:27:02');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `Inventory`
+-- Indexes for table `Rented`
 --
-ALTER TABLE `Inventory`
-  ADD PRIMARY KEY (`MOVIE_ID`),
-  ADD UNIQUE KEY `MOVIE_ID` (`MOVIE_ID`),
-  ADD KEY `MOVIE_ID_2` (`MOVIE_ID`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `Inventory`
---
-ALTER TABLE `Inventory`
-  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`MOVIE_ID`) REFERENCES `Movie` (`MOVIE_ID`) ON UPDATE CASCADE;
+ALTER TABLE `Rented`
+  ADD PRIMARY KEY (`ID`,`MOVIE_ID`),
+  ADD KEY `ID` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

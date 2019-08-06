@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Aug 06, 2019 at 01:26 PM
+-- Generation Time: Aug 06, 2019 at 01:22 PM
 -- Server version: 10.3.13-MariaDB-log
 -- PHP Version: 7.0.33
 
@@ -25,45 +25,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Inventory`
+-- Table structure for table `Reviews`
 --
 
-CREATE TABLE `Inventory` (
+CREATE TABLE `Reviews` (
+  `ID` int(4) NOT NULL,
   `MOVIE_ID` int(4) NOT NULL,
-  `STOCK` int(4) DEFAULT NULL,
-  `STOCK_OUT` int(11) NOT NULL
+  `RATING` int(5) NOT NULL,
+  `REVIEW` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Inventory`
+-- Dumping data for table `Reviews`
 --
 
-INSERT INTO `Inventory` (`MOVIE_ID`, `STOCK`, `STOCK_OUT`) VALUES
-(8, 5, 0),
-(14, 4, 1),
-(19, 3, 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `Inventory`
---
-ALTER TABLE `Inventory`
-  ADD PRIMARY KEY (`MOVIE_ID`),
-  ADD UNIQUE KEY `MOVIE_ID` (`MOVIE_ID`),
-  ADD KEY `MOVIE_ID_2` (`MOVIE_ID`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `Inventory`
---
-ALTER TABLE `Inventory`
-  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`MOVIE_ID`) REFERENCES `Movie` (`MOVIE_ID`) ON UPDATE CASCADE;
+INSERT INTO `Reviews` (`ID`, `MOVIE_ID`, `RATING`, `REVIEW`) VALUES
+(8, 66, 5, 'This is a sample review to test everything.');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
