@@ -1,48 +1,55 @@
 <!DOCTYPE html>
-<?php
-	include "connectvars.php";
-	include "header.php";
-?>
-
 <html>
-	<link rel="stylesheet" href="main.css">
-	<h3>Inventory</h3>
-</html>
-
+	<head>
+		<title>Inventory</title>
+		<link rel="stylesheet" href="main.css">
+	</head>
+<body>
 
 <?php
-	//Create connect token for database
+	include 'connectvars.php';
+	include 'header.php';
+
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-	if(!$conn) {
-		die('Could not connect: ' . msql_error());
+	if (!$conn) {
+		die('Could not connect: ' . mysql_error());
 	}
-/* Here we will have to add in table specifics
-	//Get table from database
-	$query = "SELECT * FROM Inventory"
+
+$query = "SELECT Movie.NAME, i.STOCK, i.STOCK_OUT FROM Movie LEFT JOIN Inventory i on i.MOVIE_ID = Movie.MOVIE_ID ";
+
 	$result = mysqli_query($conn, $query);
-	if(!$result) {
-		die("Query to table failed");
-	}
-	
-	//Print Column Names
-	$col_num = mysli_num_fields($result);
-	echo "<h1>Inventory</h1>";
-	echo "<table border ='1'><tr>";
-
-	for($i=0; $i<$col_num; $i++) {
-		//Get column names
-		$field = mysqli_fetch_field($result);
-		echo "<td><b>{$field->name}</b></td>";
+	if (!$result) {
+		die("Query to show fields from table failed");
 	}
 
-	//Print each individual row out
-	echo "</tr>\n";
-	while($row = msqli_fetch_row($result)) {
+	if(mysqli_num_rows($result) > 0){
+        echo "<h1>Inventory</h1>";
+		echo "<table id='t01' border='1'>";
+        echo "<thead>";
+			echo "<tr>";
+			echo "<th>NAME</th>";
+			echo "<th>STOCK</th>";
+			echo "<th>STOCK_OUT</th>";
+			echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
 
-		echo "<tr>";
-		foreach($row as $cell)
-			echo "<td>$cell</td>";
-		echo "</tr>\n";
-	}
-	*/
+        while($row = mysqli_fetch_array($result)){
+					echo "<tr>";
+					echo "<td>" . $row['NAME'] . "</td>";
+					echo "<td>" . $row['STOCK'] . "</td>";
+					echo "<td>" . $row['STOCK_OUT'] . "</td>";
+					echo "</tr>";
+        }
+        echo "</tbody>";
+        echo "</table>";
+
+        mysqli_free_result($result);
+    } else{
+		echo "<p class='lead'><em>No records were found.</em></p>";
+    }
+	mysqli_close($conn);
 ?>
+</body>
+
+</html>

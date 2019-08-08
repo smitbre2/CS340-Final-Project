@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>About</title>
+		<title>Reviews</title>
 		<link rel="stylesheet" href="main.css">
 	</head>
 <body>
@@ -15,7 +15,7 @@
 		die('Could not connect: ' . mysql_error());
 	}
 
-$query = "SELECT r.USER_ID, r.MOVIE_ID, m.NAME, r.DATE FROM Rented r LEFT JOIN Movie m ON m.MOVIE_ID = r.MOVIE_ID ";
+$query = "SELECT Movie.NAME, Reviews.USER_ID, Reviews.RATING, Reviews.REVIEW FROM Reviews LEFT JOIN Movie ON Movie.MOVIE_ID = Reviews.MOVIE_ID  ";
 
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
@@ -23,24 +23,22 @@ $query = "SELECT r.USER_ID, r.MOVIE_ID, m.NAME, r.DATE FROM Rented r LEFT JOIN M
 	}
 
 	if(mysqli_num_rows($result) > 0){
-        echo "<h1>About</h1>";
+        echo "<h1>Reviews</h1>";
 		echo "<table id='t01' border='1'>";
         echo "<thead>";
 			echo "<tr>";
-			echo "<th>USER</th>";
-			echo "<th>MOVIE_ID</th>";
 			echo "<th>NAME</th>";
-			echo "<th>DATE</th>";
+			echo "<th>RATING</th>";
+			echo "<th>REVIEW</th>";
 			echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
 
         while($row = mysqli_fetch_array($result)){
 					echo "<tr>";
-					echo "<td>" . $row['USER_ID'] . "</td>";
-					echo "<td>" . $row['MOVIE_ID'] . "</td>";
 					echo "<td>" . $row['NAME'] . "</td>";
-					echo "<td>" . $row['DATE'] . "</td>";
+					echo "<td>" . $row['RATING'] . "</td>";
+					echo "<td>" . $row['REVIEW'] . "</td>";
 					echo "</tr>";
         }
         echo "</tbody>";
