@@ -15,7 +15,8 @@
 		die('Could not connect: ' . mysql_error());
 	}
 
-$query = "SELECT Movie.NAME, i.STOCK, i.STOCK_OUT FROM Movie LEFT JOIN Inventory i on i.MOVIE_ID = Movie.MOVIE_ID ";
+//Selects titles and stock quantaties. MOVIE_ID is chosen for search functionality
+$query = "SELECT Movie.NAME, i.STOCK, i.STOCK_OUT, Movie.MOVIE_ID FROM Movie LEFT JOIN Inventory i on i.MOVIE_ID = Movie.MOVIE_ID ";
 
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
@@ -35,11 +36,11 @@ $query = "SELECT Movie.NAME, i.STOCK, i.STOCK_OUT FROM Movie LEFT JOIN Inventory
         echo "<tbody>";
 
         while($row = mysqli_fetch_array($result)){
-					echo "<tr>";
-					echo "<td>" . $row['NAME'] . "</td>";
-					echo "<td>" . $row['STOCK'] . "</td>";
-					echo "<td>" . $row['STOCK_OUT'] . "</td>";
-					echo "</tr>";
+	   		echo "<tr>";
+			echo "<td>" . '<a href = "user_search.php?id=' . $row['MOVIE_ID'] . '">'. $row['NAME'] . "</td>";	
+			echo "<td>" . $row['STOCK'] . "</td>";
+			echo "<td>" . $row['STOCK_OUT'] . "</td>";
+			echo "</tr>";
         }
         echo "</tbody>";
         echo "</table>";
