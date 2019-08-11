@@ -36,10 +36,45 @@
 	echo '<p>';
 	echo $movie["DESCRIPTION"];
         echo '</p>';
+	
+	echo "<h3>Category: " . $movie["CATEGORY"] . "</h3>";
+	echo "<h3>Rating: " . $movie["RATING"] . " / 5</h3>";
 	echo "</div>";
 	echo "</div>";
+
+	mysqli_free_result($result);
 ?>
 
+	<form  method="post">
+	  <input type="submit" name="Rent" value = "rent"> 
+	  <input type="submit" name="Cancel" value = "cancel">
+	</form>
 
+
+<!--Script below will check stock quantaties before allowing the user to rent--!>
+<!--A DB trigger/proc will need to be called when stock needs to be updated--!>
+<?php
+	$stock_query = "SELECT STOCK FROM Inventory WHERE MOVIE_ID = $id";
+	$result = mysqli_query($conn, $stock_query);
+
+	if(!$result)
+	   	die("Failed to query tables");
+
+	if($_POST["Rent"]){
+ 	   $stock_count = mysqli_fetch_array($result);
+
+	   if($stock_count[0] <= 0) {
+		die("Movie is out of stock");
+	   }else{
+		echo "<p>Stock should be updated</p>";
+	
+	   }
+	}else if($_POST["Cancel"]) {
+		echo "<p>Rental cancelled</p>";
+	}
+
+
+?>
 </body>
+
 </html>
