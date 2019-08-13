@@ -24,7 +24,7 @@ $query = "SELECT r.USER_ID, r.MOVIE_ID, m.NAME, r.DATE FROM Rented r LEFT JOIN M
 
 	if(mysqli_num_rows($result) > 0){
         echo "<h1>About</h1>";
-		echo "<table id='t01' border='1'>";
+		echo "<table class='table' id='t01' border='1'>";
         echo "<thead>";
 			echo "<tr>";
 			echo "<th>USER</th>";

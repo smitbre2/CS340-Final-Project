@@ -24,7 +24,7 @@ $query = "SELECT Movie.NAME, Reviews.USER_ID, Reviews.RATING, Reviews.REVIEW FRO
 
 	if(mysqli_num_rows($result) > 0){
         echo "<h1>Reviews</h1>";
-		echo "<table id='t01' border='1'>";
+		echo "<table class='table' id='t01' border='1'>";
         echo "<thead>";
 			echo "<tr>";
 			echo "<th>NAME</th>";
