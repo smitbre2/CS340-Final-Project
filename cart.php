@@ -42,7 +42,7 @@
 
 		if(mysqli_num_rows($result) > 0){
 	        echo "<h1>User</h1>";
-			echo "<table id='t01' border='1'>";
+			echo "<table class = 'table' id='t01' border='1'>";
 	        echo "<thead>";
 				echo "<tr>";
 				echo "<th>USER_ID</th>";

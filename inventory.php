@@ -25,7 +25,8 @@ $query = "SELECT Movie.NAME, i.STOCK, i.STOCK_OUT, Movie.MOVIE_ID FROM Movie LEF
 
 	if(mysqli_num_rows($result) > 0){
         echo "<h1>Inventory</h1>";
-		echo "<table id='t01' border='1'>";
+	echo "<div style='overflow-x:auto';>";
+	echo "<table class='table' id='t01' border='1'>";
         echo "<thead>";
 			echo "<tr>";
 			echo "<th>NAME</th>";
@@ -43,7 +44,9 @@ $query = "SELECT Movie.NAME, i.STOCK, i.STOCK_OUT, Movie.MOVIE_ID FROM Movie LEF
 			echo "</tr>";
         }
         echo "</tbody>";
-        echo "</table>";
+	echo "</table>";
+	echo "</div>";
+	
 
         mysqli_free_result($result);
     } else{
@@ -51,6 +54,7 @@ $query = "SELECT Movie.NAME, i.STOCK, i.STOCK_OUT, Movie.MOVIE_ID FROM Movie LEF
     }
 	mysqli_close($conn);
 ?>
+
 </body>
 
 </html>
