@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Jul 26, 2019 at 10:12 AM
+-- Generation Time: Aug 14, 2019 at 04:13 PM
 -- Server version: 10.3.13-MariaDB-log
 -- PHP Version: 7.0.33
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Categories` (
   `CATEGORY` varchar(10) NOT NULL,
-  `MOVIES_IN_CAT` int(5) NOT NULL
+  `MOVIES_IN_CAT` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -38,9 +38,11 @@ CREATE TABLE `Categories` (
 --
 
 INSERT INTO `Categories` (`CATEGORY`, `MOVIES_IN_CAT`) VALUES
-('Drama', 2),
-('Kids', 1),
-('Thriller', 1);
+('Drama', 6),
+('Action', 2),
+('Thriller', 1),
+('Fantasy', 1),
+('Kids', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

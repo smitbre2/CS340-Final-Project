@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Aug 06, 2019 at 01:22 PM
+-- Generation Time: Aug 14, 2019 at 04:15 PM
 -- Server version: 10.3.13-MariaDB-log
 -- PHP Version: 7.0.33
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cs340_smitbre2`
+-- Database: `cs340_mahlert`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Reviews` (
-  `ID` int(4) NOT NULL,
+  `USER_ID` int(4) NOT NULL,
   `MOVIE_ID` int(4) NOT NULL,
   `RATING` int(5) NOT NULL,
   `REVIEW` text NOT NULL
@@ -39,7 +39,7 @@ CREATE TABLE `Reviews` (
 -- Dumping data for table `Reviews`
 --
 
-INSERT INTO `Reviews` (`ID`, `MOVIE_ID`, `RATING`, `REVIEW`) VALUES
+INSERT INTO `Reviews` (`USER_ID`, `MOVIE_ID`, `RATING`, `REVIEW`) VALUES
 (8, 66, 5, 'This is a sample review to test everything.');
 COMMIT;
 
