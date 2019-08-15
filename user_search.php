@@ -91,10 +91,19 @@
 	   if($stock_count[0] <= 0) {
 		die("Movie is out of stock");
 	   }else{
+	
+	      $check_rentals = "SELECT USER_ID FROM Rented WHERE MOVIE_ID = $id";
+	      $rental_check = mysqli_query($conn, $query);
+     	      $final_check = mysqli_num_rows($posts);	      
+	      if($final_check < 1){
 		$insert_rental = "INSERT INTO Rented (USER_ID, MOVIE_ID, DATE) VALUES ('" . $_SESSION['user'] . "', '$id', current_timestamp())";
-		if(mysqli_query($conn, $insert_rental))
+		$res = mysqli_query($conn, $insert_rental);
+		if($res)
 		   echo "<p>Movie stock has been updated</p>";
-
+	      
+	      }else {
+			echo"You already have this film rented out.";
+	      }
 	   }
 	}
 
@@ -110,7 +119,6 @@
 	   $posts = mysqli_query($conn, $query);
 	   $post_count = mysqli_num_rows($posts);
 
-	   echo $post_count;
 
 	   if($post_count < 1){
 	  	 echo $post_count;
