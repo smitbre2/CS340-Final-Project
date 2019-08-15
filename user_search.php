@@ -22,10 +22,10 @@
 	if(!$result) {
 		die("Query to show fields from table failed");
 	}
-	
+
 	$movie = mysqli_fetch_array($result);
 	echo "<div class='card'>";
-	
+
 	$img = file_get_contents('imgs/'. $movie["NAME"]);
 	echo "<img src=$img";
 	echo "style='width:25%'>";
@@ -36,7 +36,9 @@
 	echo '<p>';
 	echo $movie["DESCRIPTION"];
         echo '</p>';
-	
+  echo "Movie ID: " . $movie["MOVIE_ID"];
+        echo '</p>';
+
 	echo "<h3>Category: " . $movie["CATEGORY"] . "</h3>";
 	echo "<h3>Rating: " . $movie["RATING"] . " / 5</h3>";
 	echo "</div>";
@@ -46,6 +48,7 @@
 ?>
 
 	<form  method="post">
+<<<<<<< HEAD
 	  <input type="submit" name="rent" value = "Rent"> 
 	</form>
 
@@ -65,6 +68,8 @@
 	      </textarea>
 	      <input type="submit" name="review" value="Submit Review">
 	  </div>
+=======
+>>>>>>> 49b095efb1bf111493286c964c74c45057f389c2
 	</form>
 
 
@@ -85,7 +90,7 @@
 		die("Movie is out of stock");
 	   }else{
 		echo "<p>Stock should be updated</p>";
-	
+
 	   }
 	}
 
