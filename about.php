@@ -15,7 +15,7 @@
 		die('Could not connect: ' . mysql_error());
 	}
 
-$query = "SELECT r.USER_ID, r.MOVIE_ID, m.NAME, r.DATE FROM Rented r LEFT JOIN Movie m ON m.MOVIE_ID = r.MOVIE_ID ";
+$query = "SELECT r.USER_ID, r.MOVIE_ID, m.NAME, r.CURR_DATE FROM Rented r LEFT JOIN Movie m ON m.MOVIE_ID = r.MOVIE_ID ";
 
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
@@ -30,7 +30,7 @@ $query = "SELECT r.USER_ID, r.MOVIE_ID, m.NAME, r.DATE FROM Rented r LEFT JOIN M
 			echo "<th>USER</th>";
 			echo "<th>MOVIE_ID</th>";
 			echo "<th>NAME</th>";
-			echo "<th>DATE</th>";
+			echo "<th>CURR_DATE</th>";
 			echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -40,7 +40,7 @@ $query = "SELECT r.USER_ID, r.MOVIE_ID, m.NAME, r.DATE FROM Rented r LEFT JOIN M
 					echo "<td>" . $row['USER_ID'] . "</td>";
 					echo "<td>" . $row['MOVIE_ID'] . "</td>";
 					echo "<td>" . $row['NAME'] . "</td>";
-					echo "<td>" . $row['DATE'] . "</td>";
+					echo "<td>" . $row['CURR_DATE'] . "</td>";
 					echo "</tr>";
         }
         echo "</tbody>";
