@@ -53,7 +53,7 @@
 
 	        while($row = mysqli_fetch_array($result)){
 						echo "<tr>";
-						echo "<td>" . $row['USER_ID'] . "</td>";
+						echo "<td>" . $row['ID'] . "</td>";
 						echo "<td>" . $row['PASSWORD'] . "</td>";
 						echo "</tr>";
 	        }
