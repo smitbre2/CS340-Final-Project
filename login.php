@@ -31,7 +31,6 @@ if($_POST) {
 	if($count == 1){
    
 		echo "<script type='text/javascript'>alert('==Logged In');</script>";   
-	        session_register("myusername");
 		$_SESSION['loggedin'] = true;
 		$_SESSION['user'] = $username;
 		

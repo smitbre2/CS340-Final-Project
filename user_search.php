@@ -74,6 +74,7 @@
 <!--Script below will check stock quantaties before allowing the user to rent-->
 <!--A DB trigger/proc will need to be called when stock needs to be updated-->
 <?php
+	session_start();
 	$stock_query = "SELECT STOCK FROM Inventory WHERE MOVIE_ID = $id";
 	$result = mysqli_query($conn, $stock_query);
 
@@ -93,8 +94,10 @@
 	}
 
 	//Proccess Review
+	
 	if($_POST['submit_review']){
-	  
+	   if(!isset($_SESSION['user']))
+	      die('Please log in first.');  
 	   
 	$sql = "INSERT INTO Reviews (USER_ID, MOVIE_ID, RATING, REVIEW) VALUES ('" . $_SESSION['user'] . "' ,'$id', '" . $_POST['dropdown'] . "', '" . $_POST['review'] . "')";
 
