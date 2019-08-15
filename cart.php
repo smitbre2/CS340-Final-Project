@@ -29,8 +29,8 @@
 	        $sql = "INSERT INTO Rented (USER_ID, MOVIE_ID, CURR_DATE) VALUES('$user_id', '$movie_id', default)";
 
 	        if($stmt = mysqli_prepare($conn, $sql)){
-
 	            mysqli_stmt_bind_param($stmt, "isdi", $param_user_id, $param_movie_id);
+
 
 	            // Set parameters
 				      $param_user_id = $user_id;
