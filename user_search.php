@@ -96,18 +96,31 @@
 	//Proccess Review
 	
 	if($_POST['submit_review']){
+	   //Check if logged in
 	   if(!isset($_SESSION['user']))
 	      die('Please log in first.');  
-	   
-	$sql = "INSERT INTO Reviews (USER_ID, MOVIE_ID, RATING, REVIEW) VALUES ('" . $_SESSION['user'] . "' ,'$id', '" . $_POST['dropdown'] . "', '" . $_POST['review'] . "')";
 
+	   //if movie hasn't been reviewed proceed
+	   $query = "SELECT USER_ID FROM Reviews WHERE MOVIE_ID = '" .$id .  "';";
+	   $posts = mysqli_query($conn, $query);
+	   $post_count = mysqli_num_rows($posts);
+
+	   echo $post_count;
+
+	   if($post_count < 1){
+	  	 echo $post_count;
+	$sql = "INSERT INTO Reviews (USER_ID, MOVIE_ID, RATING, REVIEW) VALUES ('" . $_SESSION['user'] . "' ,'$id', '" . $_POST['dropdown'] . "', '" . $_POST['review'] . "')";
 	$rev=mysqli_query($conn, $sql);
         if(!$rev)
 		 die('Failed to post review');
         else
 		 echo "<script type='text/javascript'>alert('==Review Posted');</script>";
 	   
+	  }else{
+		echo "<script type='text/javascript'>alert('You have already reviewed this film');</script>)";
 	  }
+}
+
 
 ?>
 </body>
