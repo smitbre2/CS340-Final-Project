@@ -46,8 +46,25 @@
 ?>
 
 	<form  method="post">
-	  <input type="submit" name="Rent" value = "rent"> 
-	  <input type="submit" name="Cancel" value = "cancel">
+	  <input type="submit" name="rent" value = "Rent"> 
+	</form>
+
+	<form method = "post">
+	  <h3>Review this movie.</h3>
+	  <div> 
+		
+	      <select name = "dropdown">
+		<option value = "1" selected>1</option>
+		<option value = "2">2</option>
+		<option value = "3">3</option>
+		<option value = "4">4</option>
+		<option value = "5">5</option>
+	      </select>
+	      <textarea rows = "5" cols = "50" name = "description">
+		Enter review here.
+	      </textarea>
+	      <input type="submit" name="review" value="Submit Review">
+	  </div>
 	</form>
 
 
@@ -60,6 +77,7 @@
 	if(!$result)
 	   	die("Failed to query tables");
 
+	//Process rent order
 	if($_POST["Rent"]){
  	   $stock_count = mysqli_fetch_array($result);
 
@@ -69,9 +87,13 @@
 		echo "<p>Stock should be updated</p>";
 	
 	   }
-	}else if($_POST["Cancel"]) {
-		echo "<p>Rental cancelled</p>";
 	}
+
+	//Proccess Review
+	if($_POST["Review"]){
+	
+	}
+
 
 
 ?>
