@@ -82,13 +82,18 @@
 	   	die("Failed to query tables");
 
 	//Process rent order
-	if($_POST["Rent"]){
+	if($_POST["rent"]){
+	   if(!isset($_SESSION['user'])){
+	      die("You must login to rent a film.");
+	   }
  	   $stock_count = mysqli_fetch_array($result);
 
 	   if($stock_count[0] <= 0) {
 		die("Movie is out of stock");
 	   }else{
-		echo "<p>Stock should be updated</p>";
+		$insert_rental = "INSERT INTO Rented (USER_ID, MOVIE_ID, DATE) VALUES ('" . $_SESSION['user'] . "', '$id', current_timestamp())";
+		if(mysqli_query($conn, $insert_rental))
+		   echo "<p>Movie stock has been updated</p>";
 
 	   }
 	}
