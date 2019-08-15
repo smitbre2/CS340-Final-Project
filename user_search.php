@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-   <?php
+<?php
+	session_start();
 	include 'connectvars.php';
 	include 'header.php';
    ?>
@@ -48,7 +49,6 @@
 ?>
 
 	<form  method="post">
-<<<<<<< HEAD
 	  <input type="submit" name="rent" value = "Rent"> 
 	</form>
 
@@ -63,18 +63,16 @@
 		<option value = "4">4</option>
 		<option value = "5">5</option>
 	      </select>
-	      <textarea rows = "5" cols = "50" name = "description">
+	      <textarea rows = "5" cols = "50" name = "review">
 		Enter review here.
 	      </textarea>
-	      <input type="submit" name="review" value="Submit Review">
+	      <input type="submit" name="submit_review" value="Submit Review">
 	  </div>
-=======
->>>>>>> 49b095efb1bf111493286c964c74c45057f389c2
 	</form>
 
 
-<!--Script below will check stock quantaties before allowing the user to rent--!>
-<!--A DB trigger/proc will need to be called when stock needs to be updated--!>
+<!--Script below will check stock quantaties before allowing the user to rent-->
+<!--A DB trigger/proc will need to be called when stock needs to be updated-->
 <?php
 	$stock_query = "SELECT STOCK FROM Inventory WHERE MOVIE_ID = $id";
 	$result = mysqli_query($conn, $stock_query);
@@ -95,11 +93,18 @@
 	}
 
 	//Proccess Review
-	if($_POST["Review"]){
-	
-	}
+	if($_POST['submit_review']){
+	  
+	   
+	$sql = "INSERT INTO Reviews (USER_ID, MOVIE_ID, RATING, REVIEW) VALUES ('" . $_SESSION['user'] . "' ,'$id', '" . $_POST['dropdown'] . "', '" . $_POST['review'] . "')";
 
-
+	$rev=mysqli_query($conn, $sql);
+        if(!$rev)
+		 die('Failed to post review');
+        else
+		 echo "<script type='text/javascript'>alert('==Review Posted');</script>";
+	   
+	  }
 
 ?>
 </body>
