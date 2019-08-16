@@ -6,16 +6,16 @@
 	if(!$conn) {
 		die("Could not connect: " . mysql_error());
 	}
-	
+
 	//Initialize values to be empty
-	$username = NULL; 
+	$username = NULL;
 	$password = "";
 	$username_err = $password_err = "";
 	if($_POST) {
 
 		//check username for availability
 	   	if(empty($_POST["username"])){
-			$username_err = "Please enter a User ID.";
+			$username_err = "Please enter a User .";
 		}else{
 			$username = $_POST["username"];
 		}
@@ -28,18 +28,18 @@
 		}
 		//Check DB for error before insert
 		if(empty($username_err) && empty($password_err)){
-		
-		   $sql = "INSERT INTO User (ID, PASSWORD) VALUES ('$username', '$password')";
+
+		   $sql = "INSERT INTO User (USER_ID, PASSWORD) VALUES ('$username', '$password')";
 		   $result = mysqli_query($conn, $sql);
 
 			if($result){
 			   echo "<script type='text/javascript'>alert('IT WORKED');</script>";
 			}else {
 			   echo "<script type='text/javascript'>alert('Failed to register.');</script>";
-			   mysqli_error($conn);	
+			   mysqli_error($conn);
 			}
 		}
-		
+
 	//close connection;
 	mysqli_close($conn);
 	}
@@ -53,7 +53,7 @@
    <div class="wrapper">
 	<h2>Sign Up</h2>
 	<p>Fill out this form to register an account.</p>
-	
+
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 		<div class = "<?php echo(!empty($username_err)) ? 'has-error' : ''; ?>">
 		   <label>Username</label>
@@ -65,7 +65,7 @@
 		   <label>Password</label>
 		   <input type="password" name = "password" value = "<?php echo $password; ?>">
 		   <span><?php echo $password_err; ?></span>
-	
+
 		</div>
 		<div>
 		   <input type="submit" class="btn" value = "Submit">
@@ -73,7 +73,7 @@
 		</div>
 
 		<p>Already have an account? <a href="login.php">Login here</a>.</p>
-		
+
 	</form>
    </div>
 
