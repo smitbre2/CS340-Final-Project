@@ -1,6 +1,47 @@
+<!DOCTYPE HTML>
+<head>
+	<link rel="stylesheet" href = "main.css">
+</head>
+
+
 <?php
 	include "connectvars.php";
 	include "header.php";
+	?>
+
+	<body>
+
+   <div class="wrapper">
+	<h2>Sign Up</h2>
+	<p>Fill out this form to register an account.</p>
+
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+		<div class = "<?php echo(!empty($username_err)) ? 'has-error' : ''; ?>">
+		   <label>Username</label>
+		   <input type ="number" name="username" value="<?php echo $username;?>">
+		   <span><?php echo $username_err; ?></span>
+		</div>
+
+		<div class = "<?php echo(!empty($password_err)) ? 'has-error' : ''; ?>">
+		   <label>Password</label>
+		   <input type="password" name = "password" value = "<?php echo $password; ?>">
+		   <span><?php echo $password_err; ?></span>
+
+		</div>
+		<div>
+		   <input type="submit" class="btn" value = "Submit">
+		   <input type="reset" class = "btn" value = "Reset">
+		</div>
+
+		<p>Already have an account? <a href="login.php">Login here</a>.</p>
+
+	</form>
+   </div>
+
+</body>
+</html>
+
+<?php
 
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	if(!$conn) {
@@ -44,38 +85,3 @@
 	mysqli_close($conn);
 	}
 ?>
-<!DOCTYPE HTML>
-<head>
-	<link rel="stylesheet" href = "main.css"
-</head>
-<body>
-
-   <div class="wrapper">
-	<h2>Sign Up</h2>
-	<p>Fill out this form to register an account.</p>
-
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-		<div class = "<?php echo(!empty($username_err)) ? 'has-error' : ''; ?>">
-		   <label>Username</label>
-		   <input type ="number" name="username" value="<?php echo $username;?>">
-		   <span><?php echo $username_err; ?></span>
-		</div>
-
-		<div class = "<?php echo(!empty($password_err)) ? 'has-error' : ''; ?>">
-		   <label>Password</label>
-		   <input type="password" name = "password" value = "<?php echo $password; ?>">
-		   <span><?php echo $password_err; ?></span>
-
-		</div>
-		<div>
-		   <input type="submit" class="btn" value = "Submit">
-		   <input type="reset" class = "btn" value = "Reset">
-		</div>
-
-		<p>Already have an account? <a href="login.php">Login here</a>.</p>
-
-	</form>
-   </div>
-
-</body>
-</html>
