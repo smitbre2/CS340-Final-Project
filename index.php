@@ -8,9 +8,6 @@
 				include 'connectvars.php';
 				include 'header.php';
 			?>
-			<div class="title">
-				<h1> Movies R Us </h1>
-			</div>
 
 			<div class="container-main">
 			<?php
