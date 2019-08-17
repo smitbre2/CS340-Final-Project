@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Aug 14, 2019 at 04:15 PM
+-- Generation Time: Aug 16, 2019 at 06:15 PM
 -- Server version: 10.3.13-MariaDB-log
 -- PHP Version: 7.0.33
 
@@ -31,33 +31,35 @@ SET time_zone = "+00:00";
 CREATE TABLE `Rented` (
   `USER_ID` int(4) NOT NULL,
   `MOVIE_ID` int(4) NOT NULL,
-  `DATE` datetime NOT NULL DEFAULT current_timestamp()
+  `CURR_DATE` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Rented`
 --
 
-INSERT INTO `Rented` (`USER_ID`, `MOVIE_ID`, `DATE`) VALUES
-(13, 14, '2019-08-06 13:27:02'),
-(13, 121, '2019-08-07 11:17:07'),
-(123, 434, '2019-08-07 11:17:26'),
-(626, 121, '2019-08-07 11:17:46');
+INSERT INTO `Rented` (`USER_ID`, `MOVIE_ID`, `CURR_DATE`) VALUES
+(626, 8, '2019-08-16 18:02:24'),
+(626, 475, '2019-08-16 16:35:36'),
+(1555, 8, '2019-08-16 18:02:34'),
+(1555, 121, '2019-08-16 16:32:24');
 
 --
 -- Triggers `Rented`
 --
 DELIMITER $$
-CREATE TRIGGER `update_stock_after_rent` AFTER INSERT ON `Rented` FOR EACH ROW BEGIN
-	UPDATE Inventory
-    SET STOCK = STOCK - 1, STOCK_OUT = STOCK_OUT + 1;
+CREATE TRIGGER `update_stock_in` BEFORE DELETE ON `Rented` FOR EACH ROW BEGIN
+ 	UPDATE Inventory
+	SET STOCK = STOCK + 1, STOCK_OUT = STOCK_OUT - 1
+	WHERE MOVIE_ID = (SELECT DISTINCT MOVIE_ID FROM Inventory WHERE Inventory.MOVIE_ID=old.MOVIE_ID);
 END
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `update_stock_after_return` AFTER DELETE ON `Rented` FOR EACH ROW BEGIN
-	UPDATE Inventory
-    SET Stock = Stock + 1, STOCK_OUT = STOCK_OUT - 1;
+CREATE TRIGGER `update_stock_out` AFTER INSERT ON `Rented` FOR EACH ROW BEGIN
+ 	UPDATE Inventory
+	SET STOCK = STOCK - 1, STOCK_OUT = STOCK_OUT + 1
+	WHERE MOVIE_ID = (SELECT DISTINCT MOVIE_ID FROM Inventory WHERE Inventory.MOVIE_ID=new.MOVIE_ID);
 END
 $$
 DELIMITER ;

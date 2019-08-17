@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Aug 14, 2019 at 04:15 PM
+-- Generation Time: Aug 16, 2019 at 06:15 PM
 -- Server version: 10.3.13-MariaDB-log
 -- PHP Version: 7.0.33
 
@@ -40,7 +40,8 @@ CREATE TABLE `Reviews` (
 --
 
 INSERT INTO `Reviews` (`USER_ID`, `MOVIE_ID`, `RATING`, `REVIEW`) VALUES
-(8, 66, 5, 'This is a sample review to test everything.');
+(8, 66, 5, 'This is a sample review to test everything.'),
+(626, 8, 4, 'Great Movie! Lots of heartfelt moments!');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

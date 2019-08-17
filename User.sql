@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Jul 26, 2019 at 10:13 AM
+-- Generation Time: Aug 16, 2019 at 06:15 PM
 -- Server version: 10.3.13-MariaDB-log
 -- PHP Version: 7.0.33
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `User` (
-  `ID` int(4) NOT NULL,
+  `USER_ID` int(4) NOT NULL,
   `PASSWORD` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -37,10 +37,14 @@ CREATE TABLE `User` (
 -- Dumping data for table `User`
 --
 
-INSERT INTO `User` (`ID`, `PASSWORD`) VALUES
+INSERT INTO `User` (`USER_ID`, `PASSWORD`) VALUES
 (13, 'Friday13'),
 (123, 'password1'),
-(626, 'hawaii50');
+(132, 'failed'),
+(333, 'test1'),
+(626, 'hawaii50'),
+(1555, 'nicela'),
+(33333, 'test2');
 
 --
 -- Indexes for dumped tables
@@ -50,7 +54,7 @@ INSERT INTO `User` (`ID`, `PASSWORD`) VALUES
 -- Indexes for table `User`
 --
 ALTER TABLE `User`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`USER_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

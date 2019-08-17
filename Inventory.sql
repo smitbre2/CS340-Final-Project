@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: classmysql.engr.oregonstate.edu:3306
--- Generation Time: Aug 06, 2019 at 01:26 PM
+-- Generation Time: Aug 16, 2019 at 06:15 PM
 -- Server version: 10.3.13-MariaDB-log
 -- PHP Version: 7.0.33
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cs340_smitbre2`
+-- Database: `cs340_mahlert`
 --
 
 -- --------------------------------------------------------
@@ -39,9 +39,17 @@ CREATE TABLE `Inventory` (
 --
 
 INSERT INTO `Inventory` (`MOVIE_ID`, `STOCK`, `STOCK_OUT`) VALUES
-(8, 5, 0),
-(14, 4, 1),
-(19, 3, 0);
+(8, 5, 2),
+(14, 5, 0),
+(19, 3, 0),
+(66, 1, 0),
+(121, 5, 1),
+(161, 1, 0),
+(190, 1, 0),
+(331, 1, 0),
+(434, 5, 0),
+(475, 0, 1),
+(641, 3, 0);
 
 --
 -- Indexes for dumped tables
@@ -54,16 +62,6 @@ ALTER TABLE `Inventory`
   ADD PRIMARY KEY (`MOVIE_ID`),
   ADD UNIQUE KEY `MOVIE_ID` (`MOVIE_ID`),
   ADD KEY `MOVIE_ID_2` (`MOVIE_ID`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `Inventory`
---
-ALTER TABLE `Inventory`
-  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`MOVIE_ID`) REFERENCES `Movie` (`MOVIE_ID`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
