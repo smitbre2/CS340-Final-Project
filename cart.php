@@ -23,9 +23,10 @@
         $user_id_err = "Please enter user_id.";
     } elseif(!ctype_digit($user_id)){
         $user_id_err = "Please enter a positive integer value of id.";
-    }
+			}
 
 		if(empty($user_id__err) && empty($movie_id_err)){
+
 	        $sql = "INSERT INTO Rented (USER_ID, MOVIE_ID, CURR_DATE) VALUES('$user_id', '$movie_id', default)";
 
 	        if($stmt = mysqli_prepare($conn, $sql)){
@@ -64,7 +65,7 @@
 
 		if(empty($user_id__err) && empty($movie_id_err)){
 
-	        $sql = "DELETE FROM Rented WHERE USER_ID = ?";
+	        $sql = "DELETE FROM Rented WHERE USER_ID = '$user_id' AND MOVIE_ID = '$movie_id'";
 
 					if($stmt = mysqli_prepare($conn, $sql)){
 
@@ -72,11 +73,12 @@
 
 				      $param_user_id = trim($_POST["USER_ID"]);
 	            $param_movie_id = trim($_POST["MOVIE_ID"]);
-					
+
 							if(mysqli_stmt_execute($stmt)){
 									header("location: index.php");
 									exit();
 							} else{
+
 									echo "Error deleting the Rent";
 							}
 					}
