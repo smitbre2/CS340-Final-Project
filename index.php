@@ -8,10 +8,8 @@
 				include 'connectvars.php';
 				include 'header.php';
 			?>
-			<div class="photo-card">
-				<a href="default.asp">
- 					<img src="https://en.wikipedia.org/wiki/Princess_Leia#/media/File:Princess_Leia's_characteristic_hairstyle.jpg">
-				</a>
+			<div class="title">
+				<h1> Movies R Us </h1>
 			</div>
 
 			<div class="container-main">
@@ -30,7 +28,7 @@
 				}
 
 				if(mysqli_num_rows($result) > 0){
-					  echo "<h1>Movies</h1>";
+					  echo "<h2>Movies</h2>";
 				echo "<div style='overflow-x:auto';>";
 				echo "<table class='table' id='t01' border='1'>";
 			        echo "<thead>";
@@ -78,7 +76,7 @@
 				}
 
 				if(mysqli_num_rows($result) > 0){
-					  echo "<h1>Categories</h1>";
+					  echo "<h2>Categories</h2>";
 				echo "<div style='overflow-x:auto';>";
 				echo "<table class='table' id='t01' border='1'>";
 			        echo "<thead>";
